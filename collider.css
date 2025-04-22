@@ -1,0 +1,175 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background: whitesmoke;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+   
+  
+}
+.container{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    flex: 1;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    padding-left: 0px;
+    flex-shrink: 0;
+    position: fixed;
+   }
+
+  
+@media (max-width: 1400px) {
+  .menu{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: auto;
+    z-index: 1000; 
+}
+}
+
+@media (max-width: 480px) {
+  .menu{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    padding: 10px 0;
+  
+}
+.menu a {
+  margin: 0 8px;
+  padding: 10px 15px;
+  font-size: 16px;
+  white-space: nowrap; 
+}
+
+.container {
+  padding-top: 60px;
+  flex-direction: column;
+}
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    background-color: #000000;
+    font-weight: bold;
+    margin: 40px 50px;
+    padding: 10px 35px;
+    border-radius: 1.5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 38PX;
+    
+    
+
+  }
+  .menu a:hover {
+    color: black;
+    background-color: #f1e9e9;
+    transform: scale(1.05);
+  }
+  
+ 
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    width: 100%; 
+    
+}
+
+
+.img-container img {
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  transition: transform 0.1s ease;  
+  z-index: 1000;
+  
+
+ 
+
+  
+}
+
+
+@media (min-width: 1024px) {
+  .img-container img {
+      transform: translateX(11px);  
+  }
+}
+
+
+
+#contactos {
+  opacity: 0;  
+  visibility: hidden;  
+  transition: opacity 0.5s ease, visibility 0.5s ease; 
+  padding: 50px;
+  background-color: whitesmoke;
+
+
+
+}
+
+
+#contactos.show {
+  opacity: 1;
+  visibility: visible;     
+
+ 
+}
+
+      .simbolos{
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+        justify-content: center;
+
+      }
+      .simbolos a {
+        font-size: 40px;
+        transition: all ease 100ms;
+        color: black;
+    }
+    
+    .simbolos a:hover {
+      color: red;
+      transform: scale(1.1);
+  }
+  
+  .instagram, .spotify, .youtube, .email {
+    color: black;
+}
+
+    
+   
+      
+      
