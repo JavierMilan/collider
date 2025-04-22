@@ -9,6 +9,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
    
   
 }
@@ -44,12 +45,18 @@ body {
     z-index: 1000; 
 }
 }
+@media (max-width: 1024px) {
+  .menu a {
+    margin: clamp(10px, 2vw, 20px);
+    padding: clamp(8px, 2vw, 16px) clamp(15px, 4vw, 30px);
+    font-size: clamp(18px, 4vw, 28px);
+  }
+}
 
 @media (max-width: 480px) {
   .menu{
-    flex-direction: row;
-    justify-content: center;
-    
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     top: 0;
@@ -59,19 +66,49 @@ body {
     z-index: 1000; 
     overflow-x: auto; 
     white-space: nowrap; 
-    padding: 10px 0;
+    padding: 0px ;
+    background-color: black;
+    -webkit-overflow-scrolling: touch;
+ 
+
   
 }
 .menu a {
-  margin: 0 8px;
-  padding: 10px 15px;
-  font-size: 16px;
-  white-space: nowrap; 
+  display: block; /* Hace que cada enlace ocupe su propia línea */
+    margin: clamp(4px, 1vw, 8px); /* Reduce el espacio entre los enlaces */
+    padding: clamp(6px, 1.5vw, 10px) clamp(10px, 3vw, 20px);
+    font-size: clamp(12px, 4vw, 16px);
+    white-space: nowrap;
+    text-align: center;
 }
 
 .container {
   padding-top: 60px;
   flex-direction: column;
+ 
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+  width: 100%; 
+  
+}
+
+
+.img-container img {
+max-width: 1000px;
+width: 100%;
+height: auto;
+transition: transform 0.1s ease;  
+
+
+
+
+
+
 }
 }
 
@@ -84,7 +121,7 @@ body {
     padding: 10px 35px;
     border-radius: 1.5px;
     transition: background-color 0.3s, transform 0.2s;
-    font-size: 38PX;
+    font-size: 38px;
     
     
 
