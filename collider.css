@@ -16,7 +16,6 @@ body {
   padding: 0px;
   flex: 1;
 }
-
 .menu {
   display: flex;
   flex-direction: column;
@@ -213,10 +212,10 @@ body {
   top: -10px;
 }
 
-/* Mostrar el botón hamburguesa en pantallas medianas también */
+
 @media (max-width: 1024px) {
   .hamburger {
-    display: block;  /* Hacer visible el botón hamburguesa también en pantallas medianas */
+    display: block; 
   }
   .menu {
     height: 0;
@@ -225,7 +224,7 @@ body {
   }
   
   .menu.show {
-    height: 100%; /* o el valor adecuado */
+    height: 100%; 
   }
   
   .overlay.show {
@@ -250,12 +249,12 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Asegura que ocupe toda la pantalla */
-  background: rgba(0, 0, 0, 0.6); /* color y transparencia */
+  height: 100vh; 
+  background: rgba(176, 167, 167, 0.6); 
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
-  z-index: 900; /* Debe estar encima de todo el contenido */
+  z-index: 900;
 }
 
 .overlay.show {
