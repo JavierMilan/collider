@@ -15,7 +15,7 @@
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
-      <nav class="menu">
+      <nav class="menu" role="navigation" aria-hidden="true">
         <a href="#live">HOME</a>
         <a href="#live">LIVE</a>
         <a href="#videos">VIDEOS</a>
@@ -58,15 +58,15 @@ observer.observe(document.getElementById('contactos'));
       overlay.classList.toggle('show');
       imgContainer.classList.toggle('show');
       hamburger.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);  // Actualizar el atributo aria-expanded
+      hamburger.setAttribute('aria-expanded', isOpen);  
     });
 
     overlay.addEventListener('click', () => {
       menu.classList.remove('show');
       overlay.classList.remove('show');
       imgContainer.classList.remove('show');
-      hamburger.classList.remove('open');  // Volver al estado de hamburguesa
-      hamburger.setAttribute('aria-expanded', 'false'); // Actualizar aria-expanded cuando se cierra
+      hamburger.classList.remove('open');  
+      hamburger.setAttribute('aria-expanded', 'false'); 
     });
 
     links.forEach(link => {
@@ -74,10 +74,25 @@ observer.observe(document.getElementById('contactos'));
         menu.classList.remove('show');
         overlay.classList.remove('show');
         imgContainer.classList.remove('show');
-        hamburger.classList.remove('open');  // Volver al estado de hamburguesa
-        hamburger.setAttribute('aria-expanded', 'false'); // Actualizar aria-expanded cuando se cierra
+        hamburger.classList.remove('open');  
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+    const mediaQuery = window.matchMedia('(min-width: 1424px)');
+mediaQuery.addEventListener('change', e => {
+  if (e.matches) {
+    menu.classList.remove('show');
+    overlay.classList.remove('show');
+    imgContainer.classList.remove('show');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('.img-container img');
+  logo.classList.add('animate-logo');
+});
+
   </script>
 </body>
 </html>
