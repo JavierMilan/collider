@@ -78,7 +78,7 @@ body {
   }
 
   .container {
-    padding-top: 60px;
+    padding-top: 10px;
     flex-direction: column;
   }
 }
@@ -125,7 +125,7 @@ body {
 }
 
 .img-container.show::before {
-  opacity: 1; /* Oscurecer cuando el menú se abra */
+  opacity: 1; 
 }
 
 .img-container img {
@@ -223,11 +223,12 @@ body {
   .menu {
     height: 0;
     overflow: hidden;
-    transition: height 0.3s ease-in-out;
+    transition: height 0.02s ease-in-out;
   }
   
   .menu.show {
     height: 100%; 
+    transition: height 1s ease-out;
   }
   
   .overlay.show {
@@ -255,18 +256,20 @@ body {
   height: 100vh; 
   background: rgba(163, 163, 163, 0.496); 
   background-image: url(dust.png);
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
-  transition: opacity 0.1s ease-in-out;
+  transform: translateY(-1000px); /* Empieza arriba */
+  transition: opacity  0.2s ease-in-out, transform 0.25s ease-in-out;
   z-index: 900;
 }
 .overlay.show {
   opacity: 1;
+  transform: translateY(0); /* Se desliza hacia abajo */
   pointer-events: all;
 }
 @keyframes logoEnter {
   0% {
-    transform: scale(0.5);
+    transform: scale(0.4);
     opacity: 0;
   }
   100% {
