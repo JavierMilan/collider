@@ -8,6 +8,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+
 }
 .container {
   background-color: rgb(0, 0, 0);
@@ -128,20 +129,64 @@ body {
   opacity: 1; 
 }
 
-.img-container img {
+.logo-img {
   position: relative;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
   height: auto;
-  transition: transform 0.1s ease;
-  z-index: 0;
+  z-index: 2;
+  filter: drop-shadow(1px 1px 10px rgb(0, 0, 0)); /* sombra dorada suave */
+}
+.corner-img {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 900px;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.4);
+  filter: brightness(300%);
+  z-index: 1; /* Detrás del logo (z-index: 2 en logo-img) */
+  pointer-events: none;
+  animation: shineIn 1.2s ease-out 1s forwards;
 }
 
-@media (min-width: 1024px) {
-  .img-container img {
-    transform: translateX(11px);
+@keyframes shineIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: brightness(300%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(150%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(100%);
   }
 }
+@keyframes subtleGlow {
+  0%, 100% {
+    filter: brightness(100%);
+  }
+  50% {
+    filter: brightness(125%);
+  }
+}
+
+.corner-img {
+  /* además de lo anterior... */
+  animation: shineIn 1.2s ease-out 1s forwards, subtleGlow 5s ease-in-out 7.4s infinite;
+}
+@media (max-width: 1400px) {
+  .corner-img {
+    display: none;
+  }
+}
+
 
 #contactos {
   opacity: 0;
@@ -185,7 +230,9 @@ body {
   border: none;
   cursor: pointer;
   z-index: 1100;
-  position: relative;
+  position: fixed;
+  top: 20px;
+  left: 20px;
 }
 
 .hamburger .bar {
@@ -196,8 +243,6 @@ body {
   background-color: white;
   transition: all 0.3s ease;
 }
-
-/* Cuando el botón está abierto, las barras se transforman en una "X" */
 .hamburger.open .bar:nth-child(1) {
   transform: rotate(45deg);
   top: 10px;
@@ -237,8 +282,7 @@ body {
   }
 
   .container {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
   }
 
@@ -254,22 +298,64 @@ body {
   left: 0;
   width: 100%;
   height: 100vh; 
-  background: rgba(163, 163, 163, 0.496); 
+  background: rgb(84, 84, 84); 
   background-image: url(dust.png);
   opacity: 1;
   pointer-events: none;
-  transform: translateY(-1000px); /* Empieza arriba */
+  transform: translateY(-1000px);
   transition: opacity  0.2s ease-in-out, transform 0.25s ease-in-out;
   z-index: 900;
+  overflow: hidden;
 }
 .overlay.show {
   opacity: 1;
-  transform: translateY(0); /* Se desliza hacia abajo */
+  transform: translateY(0); 
   pointer-events: all;
 }
+
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  transform: scale(1);
+  z-index:0 ;
+  pointer-events: none;
+}
+@keyframes fadeFlashIn {
+  0% {
+    transform: scale(5);
+    filter: brightness(0%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.0;
+    transform: scale(1);
+    filter: brightness(0%);
+  }
+  60% {
+    opacity: 0.1;
+    transform: scale(1);
+    filter: brightness(300%);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+    filter: brightness(50%);
+  }
+}
+.overlay.show .overlay-image {
+  animation: fadeFlashIn 4.0s ease-out forwards;
+}
+
+
+
 @keyframes logoEnter {
   0% {
-    transform: scale(0.4);
+    transform: scale(0.9);
     opacity: 0;
   }
   100% {
@@ -278,14 +364,10 @@ body {
   }
 }
 .img-container img.animate-logo {
-  animation: logoEnter 0.3s ease-out forwards;
+  animation: logoEnter 0.4s ease-out forwards;
 }
 @keyframes MenuEnter {
   0% {
-    
-    opacity: 0;
-  }
-  30% {
     
     opacity: 0;
   }
@@ -295,8 +377,8 @@ body {
   }
 }
 .menu{
-  animation: MenuEnter 2.5s ease-out forwards;
+  animation: MenuEnter 1s ease-out forwards;
 }
 .hamburger{
-  animation: MenuEnter 2s ease-out forwards;
+  animation: MenuEnter 1s ease-out forwards;
 }
